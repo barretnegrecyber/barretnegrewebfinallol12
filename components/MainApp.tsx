@@ -92,7 +92,7 @@ const translations = {
       subtitle: 'Especialització total en seguretat web i protecció de servidors. Identifiquem el que els escàners automàtics ignoren.',
       items: [
         { title: "Auditoria Web i Pentesting", description: "Anàlisi exhaustiva d'aplicacions web. Detecció de vulnerabilitats OWASP Top 10, injecció SQL, XSS i errors lògics crítics a la teva plataforma online.", tags: ["Web Pentest", "API Security", "OWASP"] },
-        { title: "Seguretat de Servidors", description: "Hardening profund d'infraestructura Linux i Windows. Revisión de configuracions, permisos, serveis exposats i prevenció d'escalada de privilegis.", tags: ["Linux Hardening", "Cloud Security", "SysAdmin Ops"] },
+        { title: "Seguretat de Servidors", description: "Hardening profund d'infraestructura Linux i Windows. Revisión de configuracions, permisos, serveis exposats i prevenció d'escalada de privilegios.", tags: ["Linux Hardening", "Cloud Security", "SysAdmin Ops"] },
         { title: "Auditoria de Codi Font", description: "Deconstrucció del teu programari. Anàlisi estàtica i dinàmica per trobar lògica corrupta, backdoors ocults i errors de disseny al core de la teva aplicació.", tags: ["Code Review", "White Box", "Secure Coding"] },
         { title: "Simulació d'Adversari", description: "Red Teaming complet. No busquem només errors tècnics, busquem comprometre el teu negoci simulant un atac real dirigit i persistent.", tags: ["Red Team", "APT Sim", "Intrusió"] }
       ]
@@ -365,10 +365,10 @@ const MainApp: React.FC = () => {
 
         <div className="max-w-6xl mx-auto relative z-10">
            <div className="border-4 border-white/90 p-2 md:p-4 bg-black shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
-             <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden">
+             <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
                
-               {/* Content - Full Width */}
-               <div className="relative z-20 w-full text-center md:text-left">
+               {/* Content - Full Width Centered */}
+               <div className="relative z-20 w-full max-w-4xl">
                  <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] mb-6 mix-blend-hard-light">
                    {t.pricing.brand.split(' ')[0]}<br/>
                    <span className="text-gray-300">{t.pricing.brand.split(' ')[1]}</span>
@@ -379,32 +379,32 @@ const MainApp: React.FC = () => {
                    <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider">{t.pricing.sub2}</h3>
                  </div>
 
-                 <div className="mb-12 transform -rotate-1 origin-center md:origin-left inline-block">
+                 <div className="mb-12 transform -rotate-1 inline-block">
                    <span className="bg-white text-black px-4 py-2 text-2xl md:text-4xl font-black uppercase tracking-tighter inline-block shadow-[5px_5px_0px_rgba(50,50,50,1)]">
                      {t.pricing.test}
                    </span>
                  </div>
 
-                 {/* Pricing Blocks - Responsive Grid */}
-                 <div className="grid md:grid-cols-2 gap-12 mb-12">
-                    <div>
+                 {/* Pricing Blocks - Centered Grid */}
+                 <div className="grid md:grid-cols-2 gap-12 mb-12 text-left md:text-center max-w-3xl mx-auto">
+                    <div className="flex flex-col items-center">
                        <p className="text-gray-400 font-bold text-xs md:text-sm tracking-[0.2em] mb-1 uppercase border-b border-gray-700 inline-block pb-1">{t.pricing.individual}</p>
-                       <div className="flex items-baseline gap-2 justify-center md:justify-start">
+                       <div className="flex items-baseline gap-2">
                           <span className="text-5xl md:text-6xl font-black text-white">{t.pricing.individualPrice}</span>
                           <span className="text-[10px] text-gray-500 font-bold uppercase">{t.pricing.vat}</span>
                        </div>
                     </div>
 
-                    <div>
+                    <div className="flex flex-col items-center">
                        <p className="text-gray-400 font-bold text-xs md:text-sm tracking-[0.2em] mb-1 uppercase border-b border-gray-700 inline-block pb-1">{t.pricing.company}</p>
-                       <div className="flex items-baseline gap-2 justify-center md:justify-start">
+                       <div className="flex items-baseline gap-2">
                           <span className="text-5xl md:text-6xl font-black text-white">{t.pricing.companyPrice}</span>
                           <span className="text-[10px] text-gray-500 font-bold uppercase">{t.pricing.vat}</span>
                        </div>
                     </div>
                  </div>
 
-                 <div className="pt-8 border-t-4 border-dotted border-white/20">
+                 <div className="pt-8 border-t-4 border-dotted border-white/20 w-full max-w-lg mx-auto">
                     <p className="font-mono font-bold text-white/80 tracking-widest text-sm md:text-base">
                        {t.pricing.email}
                     </p>
@@ -460,7 +460,5 @@ const MainApp: React.FC = () => {
     </div>
   );
 };
-
-export default MainApp;
 
 export default MainApp;
