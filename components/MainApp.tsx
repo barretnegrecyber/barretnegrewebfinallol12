@@ -127,57 +127,6 @@ const translations = {
   }
 };
 
-// Custom Hat Component mimicking the silhouette provided
-const HatSilhouette = () => (
-  <svg viewBox="0 0 450 400" className="w-full max-w-[300px] md:max-w-[400px] h-auto opacity-90 mix-blend-screen" style={{ filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5))' }}>
-      {/* Crown Outline */}
-      <path 
-        d="M120 240 C 125 180, 140 90, 220 70 C 300 50, 340 90, 350 150 C 355 180, 360 240, 360 240" 
-        fill="none" 
-        stroke="white" 
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      
-      {/* Brim Outline */}
-      <path 
-        d="M40 250 C 60 240, 100 230, 120 240 C 120 240, 360 240, 360 240 C 380 230, 420 250, 440 270"
-        fill="none" 
-        stroke="white" 
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      
-      {/* Band Detail (Subtle) */}
-      <path 
-        d="M125 220 C 200 235, 280 235, 355 220" 
-        fill="none" 
-        stroke="white" 
-        strokeWidth="2" 
-        strokeDasharray="4 8" 
-        opacity="0.6" 
-      />
-
-      {/* Inner shadow/form hint */}
-      <path 
-         d="M360 240 L 360 280 C 300 300, 180 300, 120 280 L 120 240"
-         fill="none"
-         stroke="white"
-         strokeWidth="1"
-         opacity="0.3"
-      />
-
-      <defs>
-        <filter id="roughEdge">
-          <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="5" stitchTiles="stitch" />
-          <feDisplacementMap in="SourceGraphic" scale="5" />
-        </filter>
-      </defs>
-  </svg>
-);
-
 const MainApp: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -416,10 +365,10 @@ const MainApp: React.FC = () => {
 
         <div className="max-w-6xl mx-auto relative z-10">
            <div className="border-4 border-white/90 p-2 md:p-4 bg-black shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
-             <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
+             <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden">
                
-               {/* Content Side */}
-               <div className="relative z-20 w-full md:w-1/2">
+               {/* Content - Full Width */}
+               <div className="relative z-20 w-full text-center md:text-left">
                  <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] mb-6 mix-blend-hard-light">
                    {t.pricing.brand.split(' ')[0]}<br/>
                    <span className="text-gray-300">{t.pricing.brand.split(' ')[1]}</span>
@@ -430,41 +379,36 @@ const MainApp: React.FC = () => {
                    <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider">{t.pricing.sub2}</h3>
                  </div>
 
-                 <div className="mb-12 transform -rotate-1 origin-left">
+                 <div className="mb-12 transform -rotate-1 origin-center md:origin-left inline-block">
                    <span className="bg-white text-black px-4 py-2 text-2xl md:text-4xl font-black uppercase tracking-tighter inline-block shadow-[5px_5px_0px_rgba(50,50,50,1)]">
                      {t.pricing.test}
                    </span>
                  </div>
 
-                 {/* Pricing Blocks */}
-                 <div className="space-y-8">
+                 {/* Pricing Blocks - Responsive Grid */}
+                 <div className="grid md:grid-cols-2 gap-12 mb-12">
                     <div>
                        <p className="text-gray-400 font-bold text-xs md:text-sm tracking-[0.2em] mb-1 uppercase border-b border-gray-700 inline-block pb-1">{t.pricing.individual}</p>
-                       <div className="flex items-baseline gap-2">
-                          <span className="text-4xl md:text-5xl font-black text-white">{t.pricing.individualPrice}</span>
+                       <div className="flex items-baseline gap-2 justify-center md:justify-start">
+                          <span className="text-5xl md:text-6xl font-black text-white">{t.pricing.individualPrice}</span>
                           <span className="text-[10px] text-gray-500 font-bold uppercase">{t.pricing.vat}</span>
                        </div>
                     </div>
 
                     <div>
                        <p className="text-gray-400 font-bold text-xs md:text-sm tracking-[0.2em] mb-1 uppercase border-b border-gray-700 inline-block pb-1">{t.pricing.company}</p>
-                       <div className="flex items-baseline gap-2">
-                          <span className="text-4xl md:text-5xl font-black text-white">{t.pricing.companyPrice}</span>
+                       <div className="flex items-baseline gap-2 justify-center md:justify-start">
+                          <span className="text-5xl md:text-6xl font-black text-white">{t.pricing.companyPrice}</span>
                           <span className="text-[10px] text-gray-500 font-bold uppercase">{t.pricing.vat}</span>
                        </div>
                     </div>
                  </div>
 
-                 <div className="mt-12 pt-8 border-t-4 border-dotted border-white/20">
+                 <div className="pt-8 border-t-4 border-dotted border-white/20">
                     <p className="font-mono font-bold text-white/80 tracking-widest text-sm md:text-base">
                        {t.pricing.email}
                     </p>
                  </div>
-               </div>
-
-               {/* Illustration Side */}
-               <div className="relative z-10 w-full md:w-1/2 flex justify-center md:justify-end pointer-events-none select-none">
-                  <HatSilhouette />
                </div>
 
              </div>
@@ -516,5 +460,7 @@ const MainApp: React.FC = () => {
     </div>
   );
 };
+
+export default MainApp;
 
 export default MainApp;
