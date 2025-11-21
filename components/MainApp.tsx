@@ -397,14 +397,12 @@ const MainApp: React.FC = () => {
 
       {/* Pricing Poster Section - TRANSPARENT SECTION, OPAQUE CARD */}
       <section id="pricing" className="py-24 px-4 bg-transparent relative overflow-hidden border-t border-b border-parrot-border/10">
-        {/* Noise/Texture Overlay REMOVED to see background clearer, or kept very subtle */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ 
-           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
-        }}></div>
+        {/* NOISE OVERLAY REMOVED */}
 
         <div className="max-w-6xl mx-auto relative z-10">
            {/* CARD WITH BACKGROUND - Opacity Reduced to match Contact */}
-           <div className="border-4 border-white/90 p-2 md:p-4 bg-black/40 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
+           {/* REMOVED shadow-[0_0_50px_rgba(0,0,0,0.9)] to fix the dark background issue */}
+           <div className="border-4 border-white/90 p-2 md:p-4 bg-black/40 backdrop-blur-md transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
              <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
                
                {/* Content - Full Width Centered */}
