@@ -395,7 +395,7 @@ const MainApp: React.FC = () => {
       </section>
 
       {/* Pricing Poster Section */}
-      <section id="pricing" className="py-24 px-4 bg-[#080808] relative overflow-hidden border-t border-b border-parrot-border/10">
+      <section id="pricing" className="py-24 px-4 bg-[#080808]/70 backdrop-blur-sm relative overflow-hidden border-t border-b border-parrot-border/10">
         {/* Noise/Texture Overlay for Poster Effect */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ 
            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
@@ -455,7 +455,7 @@ const MainApp: React.FC = () => {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-4 bg-[#05080f] border-t border-parrot-border/30 relative">
+      <section id="contact" className="py-24 px-4 bg-[#05080f]/70 backdrop-blur-sm border-t border-parrot-border/30 relative">
          <div className="max-w-2xl mx-auto">
             <div className="mb-12 border-l-4 border-parrot-cyan pl-6">
                <h2 className="text-4xl font-bold text-white mb-2">{t.contact.title}</h2>
@@ -518,7 +518,7 @@ const MainApp: React.FC = () => {
          </div>
       </section>
 
-      <footer className="py-12 bg-black text-center text-[10px] text-gray-700 border-t border-gray-900 relative overflow-hidden">
+      <footer className="py-12 bg-black/80 backdrop-blur-sm text-center text-[10px] text-gray-700 border-t border-gray-900 relative overflow-hidden">
          
          <div className="flex justify-center gap-8 mb-6 opacity-30 hover:opacity-100 transition-opacity duration-500">
             <Network size={16} />
