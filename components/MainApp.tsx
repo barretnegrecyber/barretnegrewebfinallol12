@@ -403,8 +403,8 @@ const MainApp: React.FC = () => {
         }}></div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-           {/* CARD WITH BACKGROUND */}
-           <div className="border-4 border-white/90 p-2 md:p-4 bg-black/70 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
+           {/* CARD WITH BACKGROUND - Opacity Reduced to match Contact */}
+           <div className="border-4 border-white/90 p-2 md:p-4 bg-black/40 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
              <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
                
                {/* Content - Full Width Centered */}
