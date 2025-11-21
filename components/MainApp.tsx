@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -395,14 +396,14 @@ const MainApp: React.FC = () => {
       </section>
 
       {/* Pricing Poster Section */}
-      <section id="pricing" className="py-24 px-4 bg-[#080808]/70 backdrop-blur-sm relative overflow-hidden border-t border-b border-parrot-border/10">
+      <section id="pricing" className="py-24 px-4 bg-[#080808]/40 backdrop-blur-sm relative overflow-hidden border-t border-b border-parrot-border/10">
         {/* Noise/Texture Overlay for Poster Effect */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ 
            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
         }}></div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-           <div className="border-4 border-white/90 p-2 md:p-4 bg-black shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
+           <div className="border-4 border-white/90 p-2 md:p-4 bg-black/60 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
              <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
                
                {/* Content - Full Width Centered */}
@@ -455,7 +456,7 @@ const MainApp: React.FC = () => {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-4 bg-[#05080f]/70 backdrop-blur-sm border-t border-parrot-border/30 relative">
+      <section id="contact" className="py-24 px-4 bg-[#05080f]/40 backdrop-blur-md border-t border-parrot-border/30 relative">
          <div className="max-w-2xl mx-auto">
             <div className="mb-12 border-l-4 border-parrot-cyan pl-6">
                <h2 className="text-4xl font-bold text-white mb-2">{t.contact.title}</h2>
@@ -471,7 +472,7 @@ const MainApp: React.FC = () => {
                         name="web"
                         value={formData.web}
                         onChange={handleInputChange}
-                        className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
+                        className="w-full bg-black/50 border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
                         placeholder={t.contact.placeholders.web}
                         required
                      />
@@ -483,7 +484,7 @@ const MainApp: React.FC = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
+                        className="w-full bg-black/50 border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
                         placeholder={t.contact.placeholders.contact} 
                         required
                      />
@@ -496,7 +497,7 @@ const MainApp: React.FC = () => {
                     name="info"
                     value={formData.info}
                     onChange={handleInputChange}
-                    className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
+                    className="w-full bg-black/50 border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
                     placeholder={t.contact.placeholders.info}
                   ></textarea>
                </div>
