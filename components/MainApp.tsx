@@ -395,15 +395,16 @@ const MainApp: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing Poster Section */}
-      <section id="pricing" className="py-24 px-4 bg-[#080808]/40 backdrop-blur-sm relative overflow-hidden border-t border-b border-parrot-border/10">
-        {/* Noise/Texture Overlay for Poster Effect */}
+      {/* Pricing Poster Section - TRANSPARENT SECTION, OPAQUE CARD */}
+      <section id="pricing" className="py-24 px-4 bg-transparent relative overflow-hidden border-t border-b border-parrot-border/10">
+        {/* Noise/Texture Overlay REMOVED to see background clearer, or kept very subtle */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ 
            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
         }}></div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-           <div className="border-4 border-white/90 p-2 md:p-4 bg-black/60 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
+           {/* CARD WITH BACKGROUND */}
+           <div className="border-4 border-white/90 p-2 md:p-4 bg-black/70 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.9)] transform rotate-1 md:rotate-0 transition-transform hover:rotate-0 duration-500">
              <div className="border-2 border-white/90 p-6 md:p-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
                
                {/* Content - Full Width Centered */}
@@ -455,15 +456,15 @@ const MainApp: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-24 px-4 bg-[#05080f]/40 backdrop-blur-md border-t border-parrot-border/30 relative">
+      {/* Contact - TRANSPARENT SECTION */}
+      <section id="contact" className="py-24 px-4 bg-transparent border-t border-parrot-border/30 relative">
          <div className="max-w-2xl mx-auto">
-            <div className="mb-12 border-l-4 border-parrot-cyan pl-6">
+            <div className="mb-12 border-l-4 border-parrot-cyan pl-6 bg-black/40 backdrop-blur-sm p-4 rounded-r">
                <h2 className="text-4xl font-bold text-white mb-2">{t.contact.title}</h2>
                <p className="text-gray-500 text-sm">{t.contact.subtitle}</p>
             </div>
 
-            <form className="space-y-6" onSubmit={handleContactSubmit}>
+            <form className="space-y-6 bg-black/40 backdrop-blur-md p-8 border border-parrot-border/20" onSubmit={handleContactSubmit}>
                <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                      <label className="text-[10px] text-parrot-cyan uppercase font-bold tracking-widest">{t.contact.labels.web}</label>
