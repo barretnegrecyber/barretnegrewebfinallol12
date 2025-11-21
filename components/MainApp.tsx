@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Shield, Lock, Globe, Terminal as TermIcon, Menu, X, Network, Skull, Code, Languages, Server } from 'lucide-react';
+import { Shield, Lock, Globe, Terminal as TermIcon, Menu, X, Network, Skull, Code, Languages, Server, Send, CheckCircle, Loader2 } from 'lucide-react';
 import NetworkBackground from './MatrixRain';
 import Terminal from './Terminal';
 import ServiceCard from './ServiceCard';
@@ -61,7 +61,9 @@ const translations = {
       subtitle: 'Solicita una prueba de intrusión antes de que sea tarde.',
       labels: { web: 'Web', contact: 'Contacto', info: 'Información Adicional' },
       placeholders: { web: 'www.ejemplo.com', contact: 'admin@empresa.com', info: 'Detalles de la web, API o servidor a auditar...' },
-      btn: '>> Pedir auditoria'
+      btn: '>> Pedir auditoria',
+      sending: 'ENCRIPTANDO MENSAJE...',
+      sent: 'PAQUETE ENVIADO [200 OK]'
     },
     footer: {
       text: '© 2025 BARRET NEGRE COOPERATIVE. WEB SEC DIVISION.',
@@ -118,7 +120,9 @@ const translations = {
       subtitle: 'Sol·licita una prova d\'intrusió abans que sigui massa tard.',
       labels: { web: 'Web', contact: 'Contacte', info: 'Información Adicional' },
       placeholders: { web: 'www.exemple.com', contact: 'admin@empresa.com', info: 'Detalls de la web, API o servidor a auditar...' },
-      btn: '>> Demanar auditoria'
+      btn: '>> Demanar auditoria',
+      sending: 'ENCRIPTANT MISSATGE...',
+      sent: 'PAQUET ENVIAT [200 OK]'
     },
     footer: {
       text: '© 2025 COOPERATIVA BARRET NEGRE. DIVISIÓ DE SEGURETAT WEB.',
@@ -132,6 +136,10 @@ const MainApp: React.FC = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [language, setLanguage] = useState<Language>('es');
+  
+  // Form State
+  const [formData, setFormData] = useState({ web: '', email: '', info: '' });
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success'>('idle');
 
   const t = translations[language];
 
@@ -142,6 +150,36 @@ const MainApp: React.FC = () => {
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'es' ? 'ca' : 'es');
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.web || !formData.email) return;
+
+    setFormStatus('sending');
+
+    // Simulate "hacking" delay and then open mail client
+    setTimeout(() => {
+      setFormStatus('success');
+      
+      const subject = `[REQUEST] Auditoría para ${formData.web}`;
+      const body = `Origen: ${formData.email}\nTarget: ${formData.web}\n\nMensaje:\n${formData.info}`;
+      
+      window.location.href = `mailto:barret.negre.cyber@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // Reset form after a bit
+      setTimeout(() => {
+        setFormStatus('idle');
+        setFormData({ web: '', email: '', info: '' });
+      }, 3000);
+    }, 2000);
   };
 
   return (
@@ -424,24 +462,57 @@ const MainApp: React.FC = () => {
                <p className="text-gray-500 text-sm">{t.contact.subtitle}</p>
             </div>
 
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleContactSubmit}>
                <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                      <label className="text-[10px] text-parrot-cyan uppercase font-bold tracking-widest">{t.contact.labels.web}</label>
-                     <input type="text" className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" placeholder={t.contact.placeholders.web} />
+                     <input 
+                        type="text"
+                        name="web"
+                        value={formData.web}
+                        onChange={handleInputChange}
+                        className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
+                        placeholder={t.contact.placeholders.web}
+                        required
+                     />
                   </div>
                   <div className="space-y-2">
                      <label className="text-[10px] text-parrot-cyan uppercase font-bold tracking-widest">{t.contact.labels.contact}</label>
-                     <input type="email" className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" placeholder={t.contact.placeholders.contact} />
+                     <input 
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
+                        placeholder={t.contact.placeholders.contact} 
+                        required
+                     />
                   </div>
                </div>
                <div className="space-y-2">
                   <label className="text-[10px] text-parrot-cyan uppercase font-bold tracking-widest">{t.contact.labels.info}</label>
-                  <textarea rows={6} className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" placeholder={t.contact.placeholders.info}></textarea>
+                  <textarea 
+                    rows={6} 
+                    name="info"
+                    value={formData.info}
+                    onChange={handleInputChange}
+                    className="w-full bg-black border border-gray-800 p-4 text-sm text-white focus:border-parrot-cyan focus:outline-none transition-colors placeholder-gray-800" 
+                    placeholder={t.contact.placeholders.info}
+                  ></textarea>
                </div>
                
-               <button className="w-full bg-parrot-cyan text-black py-4 font-bold tracking-[0.2em] text-xs hover:bg-white transition-colors uppercase">
-                 {t.contact.btn}
+               <button 
+                 type="submit"
+                 disabled={formStatus !== 'idle'}
+                 className={`w-full py-4 font-bold tracking-[0.2em] text-xs transition-all uppercase flex items-center justify-center gap-2
+                   ${formStatus === 'idle' ? 'bg-parrot-cyan text-black hover:bg-white' : ''}
+                   ${formStatus === 'sending' ? 'bg-gray-800 text-parrot-lime cursor-wait' : ''}
+                   ${formStatus === 'success' ? 'bg-parrot-lime text-black' : ''}
+                 `}
+               >
+                 {formStatus === 'idle' && <>{t.contact.btn} <Send size={14}/></>}
+                 {formStatus === 'sending' && <>{t.contact.sending} <Loader2 size={14} className="animate-spin"/></>}
+                 {formStatus === 'success' && <>{t.contact.sent} <CheckCircle size={14}/></>}
                </button>
             </form>
          </div>
