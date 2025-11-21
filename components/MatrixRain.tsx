@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 const NetworkBackground: React.FC = () => {
@@ -90,7 +91,7 @@ const NetworkBackground: React.FC = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed top-0 left-0 w-full h-full z-0 opacity-40 pointer-events-none"
+      className="fixed top-0 left-0 w-full h-full z-0 opacity-70 pointer-events-none"
     />
   );
 };
